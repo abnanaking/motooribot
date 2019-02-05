@@ -7,24 +7,24 @@ const Token = "NTQwMjc1MzIzODM3NzQzMTA0.DzTwNw.tTggkaztzyLVRTPImCsHbagcxMQ"
 bot.commands = new Discord.Collection();
 
 //reads all the files in the commands folder and prints("file.js loaded!")
-
-fs.readdir("./commands/", (err, files) => {
-
-    if(err) console.log(err);
-
-    let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length <= 0){
-        console.log("You messed up, Couldn't find any commands.");
-        return;
-    }
-
-    jsfile.forEach((f, i) =>{
-        let props = require(`./commands/${f}`);
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-
-    });
-});
+//
+//fs.readdir("./commands/", (err, files) => {
+//
+//    if(err) console.log(err);
+//
+//    let jsfile = files.filter(f => f.split(".").pop() === "js")
+//    if(jsfile.length <= 0){
+//        console.log("You messed up, Couldn't find any commands.");
+//        return;
+//    }
+//
+//    jsfile.forEach((f, i) =>{
+//        let props = require(`./commands/${f}`);
+//        console.log(`${f} loaded!`);
+//        bot.commands.set(props.help.name, props);
+//
+//    });
+//});
 
 
 //prints(".. is online on .. servers")
@@ -38,17 +38,17 @@ bot.on("ready", () => {
 
 //checks if a js file from the commands folder should be activated
 
-bot.on("message", async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;
-
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if(commandfile) commandfile.run(bot,message,args);
-});
+//bot.on("message", async message => {
+//    if(message.author.bot) return;
+//    if(message.channel.type === "dm") return;
+//
+//    let messageArray = message.content.split(" ");
+//    let cmd = messageArray[0];
+//    let args = messageArray.slice(1);
+//
+//    let commandfile = bot.commands.get(cmd.slice(prefix.length));
+//    if(commandfile) commandfile.run(bot,message,args);
+//});
 
 
 //adds the NV role to new members
